@@ -12,30 +12,6 @@ let {DATABASE_URL, PORT} = require('./config');
 app.use(express.static('public'));
 app.use(morgan('dev'));
 
-let comentarios = [
-{
-    id: uuid(),
-    titulo: "Que buen blog",
-    contenido: "Gracias por compartir. Me gustó mucho",
-    autor: "Erick",
-    fecha: new Date()
-},
-{
-    id: uuid(),
-    titulo: "Hola ",
-    contenido: "Me embola",
-    autor: "Erick",
-    fecha: new Date()
-},
-{
-    id: uuid(),
-    titulo: "Pésimo blog",
-    contenido: "Que asco",
-    autor: "Moises",
-    fecha: new Date()
-}
-];
-
 app.get('/blog-api/comentarios', jsonParser, (req, res) => {
     CommentController.getAll()
         .then(comments => {
